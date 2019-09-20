@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CotizacionesCreateDlg" widgetVar="CotizacionesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCotizacionesTitle}">
+            <h:form id="CotizacionesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cotizacionesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCotizacionesLabel_idcotizaciones}" for="idcotizaciones" />
+                        <p:inputText id="idcotizaciones" value="#{cotizacionesController.selected.idcotizaciones}" title="#{bundle.CreateCotizacionesTitle_idcotizaciones}" required="true" requiredMessage="#{bundle.CreateCotizacionesRequiredMessage_idcotizaciones}"/>
+                        <p:outputLabel value="#{bundle.CreateCotizacionesLabel_nombrecotizacion}" for="nombrecotizacion" />
+                        <p:inputText id="nombrecotizacion" value="#{cotizacionesController.selected.nombrecotizacion}" title="#{bundle.CreateCotizacionesTitle_nombrecotizacion}" required="true" requiredMessage="#{bundle.CreateCotizacionesRequiredMessage_nombrecotizacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cotizacionesController.create}" value="#{bundle.Save}" update="display,:CotizacionesListForm:datalist,:growl" oncomplete="handleSubmit(args,'CotizacionesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CotizacionesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

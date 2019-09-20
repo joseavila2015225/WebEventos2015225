@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CotizacionesEditDlg" widgetVar="CotizacionesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCotizacionesTitle}">
+            <h:form id="CotizacionesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cotizacionesController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCotizacionesLabel_idcotizaciones}" for="idcotizaciones" />
+                        <p:inputText id="idcotizaciones" value="#{cotizacionesController.selected.idcotizaciones}" title="#{bundle.EditCotizacionesTitle_idcotizaciones}" required="true" requiredMessage="#{bundle.EditCotizacionesRequiredMessage_idcotizaciones}"/>
+                        <p:outputLabel value="#{bundle.EditCotizacionesLabel_nombrecotizacion}" for="nombrecotizacion" />
+                        <p:inputText id="nombrecotizacion" value="#{cotizacionesController.selected.nombrecotizacion}" title="#{bundle.EditCotizacionesTitle_nombrecotizacion}" required="true" requiredMessage="#{bundle.EditCotizacionesRequiredMessage_nombrecotizacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cotizacionesController.update}" value="#{bundle.Save}" update="display,:CotizacionesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CotizacionesEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CotizacionesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

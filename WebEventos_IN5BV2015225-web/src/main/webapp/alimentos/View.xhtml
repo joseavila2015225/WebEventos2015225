@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlimentosViewDlg" widgetVar="AlimentosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAlimentosTitle}">
+            <h:form id="AlimentosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{alimentosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAlimentosLabel_idalimentos}"/>
+                        <h:outputText value="#{alimentosController.selected.idalimentos}" title="#{bundle.ViewAlimentosTitle_idalimentos}"/>
+                        <h:outputText value="#{bundle.ViewAlimentosLabel_descripcion}"/>
+                        <h:outputText value="#{alimentosController.selected.descripcion}" title="#{bundle.ViewAlimentosTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewAlimentosLabel_precioventa}"/>
+                        <h:outputText value="#{alimentosController.selected.precioventa}" title="#{bundle.ViewAlimentosTitle_precioventa}"/>
+                        <h:outputText value="#{bundle.ViewAlimentosLabel_fechavencimiento}"/>
+                        <h:outputText value="#{alimentosController.selected.fechavencimiento}" title="#{bundle.ViewAlimentosTitle_fechavencimiento}"/>
+                        <h:outputText value="#{bundle.ViewAlimentosLabel_tipoproductoIdtipoproducto}"/>
+                        <h:outputText value="#{alimentosController.selected.tipoproductoIdtipoproducto}" title="#{bundle.ViewAlimentosTitle_tipoproductoIdtipoproducto}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AlimentosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
